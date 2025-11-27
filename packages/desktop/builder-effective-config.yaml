@@ -1,0 +1,8 @@
+directories:
+  output: dist
+  buildResources: build
+appId: EITNespaper.1.0.0
+mac:
+  category: your.app.category.type
+files: []
+electronVersion: 32.3.3

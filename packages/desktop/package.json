@@ -1,0 +1,46 @@
+{
+	"name": "desktop",
+	"version": "1.0.0",
+	"description": "Electron desktop shell",
+	"author": "Max",
+	"type": "module",
+	"main": "dist/main.js",
+	"scripts": {
+		"electronBuild": "rm -rf ../../dist/desktop && electron-builder build --publish=never --mac"
+	},
+	"devDependencies": {
+		"electron": "^32.0.0",
+		"electron-builder": "^24.13.3",
+		"cross-env": "^7.0.3"
+	},
+	"build": {
+		"appId": "EITNespaper.1.0.0",
+		"directories": {
+			"output": "../../dist/desktop",
+			"buildResources": "build"
+		},
+		"files": [
+			"dist/**",
+			"!**/*.map"
+		],
+		"extraResources": [
+			{
+				"from": "../web/dist",
+				"to": "renderer"
+			}
+		],
+		"mac": {
+			"target": [
+				{
+					"target": "dmg",
+					"arch": [
+						"arm64"
+					]
+				}
+			],
+			"hardenedRuntime": true,
+			"entitlements": "build/entitlements.mac.plist",
+			"entitlementsInherit": "build/entitlements.mac.plist"
+		}
+	}
+}

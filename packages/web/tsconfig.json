@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"strict": false,
+		"noImplicitAny": false,
+		"strictNullChecks": false,
+		"noImplicitThis": false,
+		"alwaysStrict": false,
+		"useUnknownInCatchVariables": false,
+		"noUncheckedIndexedAccess": false,
+		"exactOptionalPropertyTypes": false,
+		"noPropertyAccessFromIndexSignature": false,
+		"noFallthroughCasesInSwitch": false,
+		"noEmitOnError": false,
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"useDefineForClassFields": false
+	},
+	"files": [],
+	"references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+	"angularCompilerOptions": {
+		"strictTemplates": false,
+		"fullTemplateTypeCheck": false,
+		"strictInjectionParameters": false
+	}
+}

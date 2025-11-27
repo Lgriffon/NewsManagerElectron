@@ -1,0 +1,9 @@
+appId: com.example.reactelectron
+directories:
+  output: release
+files:
+  - packages/desktop/dist/**
+  - packages/dist-web/**
+mac: { target: dmg }
+win: { target: nsis }
+linux: { target: AppImage }
