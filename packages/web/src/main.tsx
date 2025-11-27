@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { Capacitor } from '@capacitor/core'
+import App from './App'
 
 const isNative = () => Capacitor.isNativePlatform() // iOS/Android only
 const platform = () => Capacitor.getPlatform() // 'ios' | 'android' | 'web'
@@ -33,14 +34,11 @@ const headingStyles: React.CSSProperties = {
 	fontFamily: 'Arial, Helvetica, sans-serif',
 }
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<div style={containerStyles}>
-				<h1 style={headingStyles}>
-					EIT Newspaper running on {isNative() ? `(${platform()})` : isElectron() ? '(Electron)' : '(Web)'}
-				</h1>
-			</div>
+			<App />
 		</BrowserRouter>
 	</React.StrictMode>,
 )
