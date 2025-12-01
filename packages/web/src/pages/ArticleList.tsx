@@ -12,6 +12,7 @@ export default function ArticleList() {
   const loadArticles = async () => {
     try {
       const res = await fetchList(); // appel API réel
+			console.log(res)
       setArticles(res);
     } catch (err) {
       console.error("Erreur API :", err);
@@ -66,9 +67,9 @@ export default function ArticleList() {
               </p>
               <p>{article.abstract}</p>
 
-              {article.image_data && article.image_media_type && (
+              {article.thumbnail_image && article.thumbnail_media_type && (
                 <img
-                  src={`data:${article.image_media_type};base64,${article.image_data}`}
+                  src={`data:${article.thumbnail_media_type};base64,${article.thumbnail_image}`}
                   alt={article.title}
                   style={{
                     maxWidth: "100%",
