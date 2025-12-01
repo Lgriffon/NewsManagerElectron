@@ -7,6 +7,8 @@ export interface Article {
     body:string | null,
     update_date:number | null,
     image_media_type?: string | null,
-    image_data?: string | null
+    image_data?: string | null,
+		thumbnail_image?: string | null,
+		thumbnail_media_type?: string | null,
     username: string
 }

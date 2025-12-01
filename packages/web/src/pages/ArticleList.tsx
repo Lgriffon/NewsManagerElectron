@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { fetchList } from "../api/apiClient";
 import type { Article } from "../components/Article";
+import { Link } from "react-router-dom";
 
 export default function ArticleList() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -9,10 +10,10 @@ export default function ArticleList() {
   const [activeCategory, setActiveCategory] = useState<string>("");
   const [query, setQuery] = useState<string>("");
 
- 
+  // Fonction pour appeler l'API
   const loadArticles = async () => {
     try {
-      const res = await fetchList(151, 0); 
+      const res = await fetchList(); // appel API réel
       setArticles(res);
     } catch (err) {
       console.error("Erreur API :", err);
@@ -25,7 +26,7 @@ export default function ArticleList() {
   useEffect(() => {
     loadArticles();
   }, []);
-  
+
   const categories: Array<{ value: string; label: string }> = [
     { value: "", label: "All" },
     { value: "national", label: "National" },
@@ -43,7 +44,7 @@ export default function ArticleList() {
     return "";
   };
 
-  
+
   const filteredArticles = useMemo(() => {
     const q = query.trim().toLowerCase();
     return articles.filter((a) => {
@@ -120,6 +121,19 @@ export default function ArticleList() {
             {article.abstract && (
               <p dangerouslySetInnerHTML={{ __html: article.abstract }} />
             )}
+            <Link
+              to={`/${article.id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <h3>{article.title}</h3>
+              {article.subtitle && (
+                <p style={{ fontStyle: "italic" }}>{article.subtitle}</p>
+              )}
+              <p>
+                <strong>Catégorie : </strong>
+                {article.category}
+              </p>
+              <p>{article.abstract}</p>
 
             {thumbnailUrl(article) && (
               <img
@@ -128,6 +142,18 @@ export default function ArticleList() {
                 style={{ maxWidth: "100%", borderRadius: "6px", marginTop: "10px" }}
               />
             )}
+              {article.thumbnail_image && article.thumbnail_media_type && (
+                <img
+                  src={`data:${article.thumbnail_media_type};base64,${article.thumbnail_image}`}
+                  alt={article.title}
+                  style={{
+                    maxWidth: "100%",
+                    borderRadius: "6px",
+                    marginTop: "10px",
+                  }}
+                />
+              )}
+            </Link>
           </li>
         ))}
       </ul>
