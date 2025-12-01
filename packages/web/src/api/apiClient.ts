@@ -1,4 +1,4 @@
-// apiClient.ts
+
 import axios from 'axios'
 import baseUrl from '../util/baseUrl'
 
