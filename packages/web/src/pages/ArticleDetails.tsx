@@ -57,8 +57,7 @@ export default function DetailPage() {
 
             {/* Sous-titre éventuel */}
             {data.subtitle && (
-                <h2 style={{ marginTop: 0, opacity: 0.8, fontSize: '1.1rem' }}>
-                {data.subtitle}
+                <h2 style={{ marginTop: 0, opacity: 0.8, fontSize: '1.1rem' }} dangerouslySetInnerHTML={{ __html: data.subtitle }}>
                 </h2>
             )}
 
@@ -80,7 +79,7 @@ export default function DetailPage() {
             )}
 
             {/* Abstract */}
-            <p style={{ marginTop: 16, fontWeight: 'bold' }}>{data.abstract}</p>
+            <p style={{ marginTop: 16, fontWeight: 'bold' }} dangerouslySetInnerHTML={{ __html: data.abstract }}></p>
 
             {/* Corps de l'article */}
             {data.body && (
@@ -90,8 +89,8 @@ export default function DetailPage() {
                     lineHeight: 1.6,
                     whiteSpace: 'pre-line',
                 }}
+                dangerouslySetInnerHTML={{ __html: data.body }}
                 >
-                {data.body}
                 </div>
             )}
             </article>

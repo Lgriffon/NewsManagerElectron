@@ -118,13 +118,15 @@ export default function ArticleList() {
             >
               <h3>{article.title}</h3>
               {article.subtitle && (
-                <p style={{ fontStyle: "italic" }}>{article.subtitle}</p>
+                <p style={{ fontStyle: "italic" }} dangerouslySetInnerHTML={{ __html: article.subtitle }}></p>
               )}
               <p>
                 <strong>Catégorie : </strong>
                 {article.category}
               </p>
-              <p>{article.abstract}</p>
+              {article.abstract && (
+                <p dangerouslySetInnerHTML={{ __html: article.abstract }} />
+              )}
 
             {thumbnailUrl(article) && (
               <img
