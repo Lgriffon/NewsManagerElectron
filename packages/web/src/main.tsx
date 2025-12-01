@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 import { Capacitor } from '@capacitor/core'
 import App from './App'
+import ArticleList from './pages/ArticleList'
+import ArticleDetails from './pages/ArticleDetails'
 
 const isNative = () => Capacitor.isNativePlatform() // iOS/Android only
 const platform = () => Capacitor.getPlatform() // 'ios' | 'android' | 'web'
@@ -34,11 +36,14 @@ const headingStyles: React.CSSProperties = {
 	fontFamily: 'Arial, Helvetica, sans-serif',
 }
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<App />
+			<Routes>
+				<Route path="/" element={<ArticleList />} />
+				<Route path="/:id" element={<ArticleDetails />} />
+				<Route path="*" element={<Navigate to="/" replace />} />
+        	</Routes>
 		</BrowserRouter>
 	</React.StrictMode>,
 )
