@@ -112,15 +112,6 @@ export default function ArticleList() {
               borderRadius: "8px",
             }}
           >
-            <h3>{article.title}</h3>
-            {article.subtitle && <p style={{ fontStyle: "italic" }}>{article.subtitle}</p>}
-            <p>
-              <strong>Category : </strong>
-              {article.category}
-            </p>
-            {article.abstract && (
-              <p dangerouslySetInnerHTML={{ __html: article.abstract }} />
-            )}
             <Link
               to={`/${article.id}`}
               style={{ textDecoration: "none", color: "inherit" }}
