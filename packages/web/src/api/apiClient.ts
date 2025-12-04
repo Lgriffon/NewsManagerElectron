@@ -1,13 +1,6 @@
-
-import axios from 'axios'
 import baseUrl from '../util/baseUrl'
 
 const APIKEY_ANON = 'ANON11'
-
-const http = axios.create({
-	baseURL: baseUrl,
-	headers: { Accept: 'application/json, text/plain, */*' , Authorization: 'PUIRESTAUTH apikey=' + APIKEY_ANON},
-})
 
 export async function fetchList() {
   const url = `${baseUrl}/articles`

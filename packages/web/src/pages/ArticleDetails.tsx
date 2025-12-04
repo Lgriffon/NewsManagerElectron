@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { fetchDetail } from '../api/apiClient.ts'
-import type { Article } from '../components/Article.tsx'
+import type { Article } from '../model/Article.tsx'
  
 export default function DetailPage() {
   const { id = '' } = useParams()
@@ -17,7 +17,7 @@ export default function DetailPage() {
         const res = await fetchDetail(id)
         if (!cancelled) setData(res)
       } catch (e) {
-        if (!cancelled) setError(e)
+        if (!cancelled) setError(new Error('An unexpected error occurred'))
       } finally {
         if (!cancelled) setLoading(false)
       }
@@ -38,7 +38,7 @@ export default function DetailPage() {
             <Link to="/">← Back to list</Link>
 
             <article style={{ marginTop: 20 }}>
-            {/* Image si présente */}
+            {/* Image if present */}
             {data.image_data && (
                 <img
                 src={`data:${data.image_media_type};base64,${data.image_data}`}
@@ -52,26 +52,26 @@ export default function DetailPage() {
                 />
             )}
 
-            {/* Titre */}
+            {/* Title */}
             <h1 style={{ marginBottom: 4 }}>{data.title}</h1>
 
-            {/* Sous-titre éventuel */}
+            {/* Possible subtitle */}
             {data.subtitle && (
                 <h2 style={{ marginTop: 0, opacity: 0.8, fontSize: '1.1rem' }} dangerouslySetInnerHTML={{ __html: data.subtitle }}>
                 </h2>
             )}
 
-            {/* Catégorie */}
+            {/* Category */}
             <p style={{ fontStyle: 'italic', color: '#555', marginTop: 8 }}>
                 Category: {data.category}
             </p>
 
-            {/* Auteur */}
+            {/* Author */}
             <p style={{ marginTop: 4, color: '#666' }}>
                 By <strong>{data.username}</strong>
             </p>
 
-            {/* Date de mise à jour */}
+            {/* Update date */}
             {data.update_date && (
                 <p style={{ marginTop: 4, color: '#777' }}>
                 Updated: {new Date(data.update_date).toLocaleDateString()}
@@ -81,7 +81,7 @@ export default function DetailPage() {
             {/* Abstract */}
             <p style={{ marginTop: 16, fontWeight: 'bold' }} dangerouslySetInnerHTML={{ __html: data.abstract }}></p>
 
-            {/* Corps de l'article */}
+            {/* Body of the article */}
             {data.body && (
                 <div
                 style={{

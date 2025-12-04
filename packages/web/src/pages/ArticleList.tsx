@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchList } from "../api/apiClient";
-import type { Article } from "../components/Article";
+import type { Article } from "../model/Article";
 import { Link } from "react-router-dom";
 
 export default function ArticleList() {
@@ -10,14 +10,14 @@ export default function ArticleList() {
   const [activeCategory, setActiveCategory] = useState<string>("");
   const [query, setQuery] = useState<string>("");
 
-  // Fonction pour appeler l'API
+  // Function to call the API
   const loadArticles = async () => {
     try {
-      const res = await fetchList(); // appel API réel
+      const res = await fetchList(); // actual API call
       setArticles(res);
     } catch (err) {
-      console.error("Erreur API :", err);
-      setError("Impossible de charger les articles");
+      console.error("API Error :", err);
+      setError("Unable to load articles");
     } finally {
       setLoading(false);
     }
@@ -121,7 +121,7 @@ export default function ArticleList() {
                 <p style={{ fontStyle: "italic" }} dangerouslySetInnerHTML={{ __html: article.subtitle }}></p>
               )}
               <p>
-                <strong>Catégorie : </strong>
+                <strong>Category : </strong>
                 {article.category}
               </p>
               {article.abstract && (

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 
 import { Capacitor } from '@capacitor/core'
-import App from './App'
 import ArticleList from './pages/ArticleList'
 import ArticleDetails from './pages/ArticleDetails'
 
@@ -15,7 +14,7 @@ const isElectron = () => typeof navigator !== 'undefined' && navigator.userAgent
 if (isElectron()) {
 	window.api.notify({
 		title: `EIT Newspaper`,
-		// iconPath: pathToPngOrIcoAtRuntime,
+		iconPath: '../../logo.png',
 		silent: true,
 	})
 }
