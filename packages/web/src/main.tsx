@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { HashRouter, Route, Routes, Navigate } from 'react-router-dom'
 import ArticleList from './pages/ArticleList'
 import ArticleDetails from './pages/ArticleDetails'
 
@@ -63,13 +63,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 			<h1 style={headingStyles}>EIT Newspaper</h1>
 
 			<div style={mainFrameStyles}>
-				<BrowserRouter>
+				<HashRouter>
 					<Routes>
 						<Route path="/" element={<ArticleList />} />
 						<Route path="/:id" element={<ArticleDetails />} />
 						<Route path="*" element={<Navigate to="/" replace />} />
 					</Routes>
-				</BrowserRouter>
+				</HashRouter>
 			</div>
 
 		</div>
