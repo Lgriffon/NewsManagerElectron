@@ -12,6 +12,14 @@ console.log('Capacitor config - devUrl:', devUrl)
 const config: CapacitorConfig = {
 	appId: 'com.example.app',
 	appName: 'react-electron-capacitor',
+	server: {
+		androidScheme: 'http',
+		allowNavigation: [
+			'sanger.dia.fi.upm.es',
+			'*.sanger.dia.fi.upm.es'
+		],
+		cleartext: true
+	},
 	...(isDev
 		? {
 				server: {
