@@ -13,7 +13,7 @@
 		"openAndroid": "npm run android:boot && cd packages/mobile && adb reverse tcp:5173 tcp:5173 && cross-env NODE_ENV=development DEVICE=emulator DEV_SERVER_URL=http://localhost:5173 npx cap open android --no-sync",
 		"desktop": "cd packages/desktop && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 NODE_ENV=development electron .",
 		"buildMobile": "(cd packages/web && npm run build) && (cd packages/mobile && npx cap copy android) && (cd packages/mobile/android && ./gradlew assembleDebug)",
-		"buildDesktop": "cd packages/desktop && npm run electronBuild",
+        "buildDesktop": "cd packages/web && npm run build && cd ../desktop && npm run electronBuild",
 		"android:boot": "sh -lc 'adb start-server; AVD=${EMULATOR_NAME:-$($ANDROID_HOME/emulator/emulator -list-avds | head -n1)}; test -n \"$AVD\" || { echo no AVD; exit 1; }; if ! adb devices | grep -q \"emulator-.*device\"; then nohup \"$ANDROID_HOME/emulator/emulator\" -avd \"$AVD\" -no-snapshot -netdelay none -netspeed full >/dev/null 2>&1 & fi; until adb devices | grep -q \"emulator-.*device\"; do sleep 2; done'"
 	},
 	"devDependencies": {
