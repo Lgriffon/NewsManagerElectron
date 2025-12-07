@@ -11,7 +11,7 @@ console.log('Capacitor config - devUrl:', devUrl)
 
 const config: CapacitorConfig = {
 	appId: 'com.example.app',
-	appName: 'react-electron-capacitor',
+	appName: 'EIT News Manager',
 	server: {
 		androidScheme: 'http',
 		allowNavigation: [
