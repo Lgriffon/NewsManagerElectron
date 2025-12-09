@@ -1,3 +1,5 @@
+Project made by GRIFFON LEA, LAHMAMSI MOHAMED AMINE, PRAINO LISA and THARREAU AMORY.
+
 # Run and Build the Application
 
 ## I. Prerequisites
